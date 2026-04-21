@@ -1,6 +1,8 @@
 # PDO-2026
 Connexion PDO - PHP / MySQL, MariaDB, etc ...
 
+[Lien vers le pdf de théorie](Data/PDO.pdf)
+
 ## Menu
 
 - [PDO : Présentation](#pdo--présentation)
@@ -44,7 +46,7 @@ Connexion PDO - PHP / MySQL, MariaDB, etc ...
     - [Documentation sur `execute`](#documentation-sur-execute)
     - Suite
 
-[Lien vers le pdf de théorie](Data/PDO.pdf)
+
 
 ## PDO : Présentation
 
