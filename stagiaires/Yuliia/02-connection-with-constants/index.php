@@ -50,7 +50,7 @@ $results=$request->fetchAll(PDO::FETCH_ASSOC);
 $request->closeCursor();
 $db=null;
 // fclose($file);
-$count=count($results);
+//$count=count($results);
 
 var_dump($db,$request,$results);
 ?>
