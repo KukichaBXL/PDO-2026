@@ -7,5 +7,58 @@ require_once 'config-dev.php';
 try{
     $connectDB = new PDO(DB_DSN, DB_CONNECT_USER, DB_CONNECT_PWD);
 }catch(Exception $e){
+    // Arrêt et affichage de l'erreur
     die($e->getMessage());
 }
+
+// On récupère les messages
+$request = $connectDB->query("SELECT * FROM `message`");
+
+// On compte le nombre de message(s) affecté(s)/récupèré(s)
+$nbMessage = $request->rowCount();
+
+// Si pas de message
+if($nbMessage===0){
+    $message ="Pas encore de message(s)";
+// On a, au moins, 1 message, mais probablement plus
+}else{
+    // On va récupérer les résultats dans un format gérable par PHP
+    $results = $request->fetchAll(PDO::FETCH_ASSOC);
+}
+
+$request->closeCursor();
+
+$connectDB = null;
+
+// var_dump($connectDB, $request, $nbMessage, $message);
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livre d'Or | Evénement ABC</title>
+</head>
+<body>
+    <h1>Livre d'Or</h1>
+    <p>Merci de me laisser un message sur l'événement ABC</p>
+    <form action="" method="POST" name="Message">
+        <input type="text" name="email_message" placeholder="Votre mail" /><br>
+        <textarea name="texte_message" placeholder="Votre message"></textarea><br>
+        <input type="submit" value="Envoyé" />
+        <?php
+        var_dump($_POST);
+        ?>
+    </form>
+    <div>
+    <?php
+    if(isset($message)):
+    ?>
+    <h3><?= $message ?></h3>
+    <?php
+    endif;
+    ?>
+    </div>
+</body>
+</html>
