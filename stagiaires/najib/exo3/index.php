@@ -33,6 +33,7 @@ if (isset($_POST['email'], $_POST['title'], $_POST['text'])) {
         $erreur = "Bien essayé, <a href='javascript:history.go(-1)'> recommence </a>";
     }else {
         $db->exec("INSERT INTO livre (`email`,`title`,`texte`) VALUE ('$mail ',' $title ',' $text');");
+<<<<<<< main
 
         // notre resultat vaut 1 
         if ($db) {
@@ -43,6 +44,8 @@ if (isset($_POST['email'], $_POST['title'], $_POST['text'])) {
         }
             , '3000'); </script>";
         };
+=======
+>>>>>>> main
     }
 }
 
@@ -51,6 +54,7 @@ $sql = "SELECT * FROM `livre` ORDER BY `datetime` ASC";
 $request = $db->query($sql);
 // compter le nombre de résultat
 $nbArticle = $request->rowCount();
+<<<<<<< main
 
 // transformation du ou des résultat en tableau indexé contenant des tableau associatifs
 $articles = $request->fetchAll(PDO::FETCH_ASSOC);
@@ -59,6 +63,8 @@ $articles = $request->fetchAll(PDO::FETCH_ASSOC);
 $request->closeCursor();
 // déconnection de la db
 $db = null;
+=======
+>>>>>>> main
 // s'il n'y a pas d'acticle -> nbarticle = 0
 if ($nbArticle === 0) {
     $message = "pas encore de commentaires";
@@ -68,7 +74,14 @@ if ($nbArticle === 0) {
     $message = "il y a {$nbArticle} commentaires";
 };
 
+<<<<<<< main
 
+=======
+// bonne pratique
+$request->closeCursor();
+// déconnection de la db
+$db = null;
+>>>>>>> main
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -78,6 +91,7 @@ if ($nbArticle === 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Livre d'or</title>
     <link rel="stylesheet" href="style.css">
+<<<<<<< main
     
 </head>
 
@@ -85,6 +99,11 @@ if ($nbArticle === 0) {
     <?php if (isset($reussite)) {
         echo $reussite;
     } ?>
+=======
+</head>
+
+<body>
+>>>>>>> main
     <div class="container">
         <h1>📖 Livre d'or</h1>
         <?php if (isset($erreur)) {
@@ -116,6 +135,7 @@ if ($nbArticle === 0) {
             <div class="comments">Nombre de commentaires : <?php echo $nbArticle; ?></div>
         <?php } ?>
     </div>
+<<<<<<< main
     <div class="comments-list">
         <?php foreach($articles as $article): ?>
             <div class="commentaires-utilisateur">
@@ -125,6 +145,8 @@ if ($nbArticle === 0) {
             </div>
         <?php endforeach; ?>
     </div>
+=======
+>>>>>>> main
 </body>
 
 </html>
