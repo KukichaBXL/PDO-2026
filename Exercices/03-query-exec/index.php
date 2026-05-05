@@ -39,7 +39,7 @@ if(isset($_POST['email'],$_POST['title'],$_POST['text'])){
 
         // notre résultat vaut 1 ($nbRow==1;$nbRow==true;$nbRow;)
         if($nbRow)
-            $reussite = "<h3>Merci pour votre message</h3> <script> 
+            $reussite = "<h3>Merci pour votre message dont l'id est {$bdd->lastInsertId()}</h3> <script> 
             // redirection js
             setTimeout(
             () => {
@@ -111,7 +111,7 @@ if($nbArticle===0){
     foreach($articles as $article):
     ?>
         <div class="message">
-            <h4><?= $article['title'] ?></h4>
+            <h4><?= $article['id'] ?>) <?= $article['title'] ?></h4>
             <p>Ecrit par <?= $article['email'] ?> le <?= date("d/m/Y \à H\hi",strtotime($article['datetime'])) ?></p>
             <p><?= htmlspecialchars($article['text']) ?></p>
         </div>
