@@ -8,4 +8,23 @@
 # suivant les actions utilisateur, appelez les vues.
 
 
-require  ROOT_PROJECT."/view/homepage.html.php";
+ 
+if(!isset($_GET['page'])){
+    //  on charge la page d'accueil
+    include ROOT_PROJECT."/view/homepage.html.php";
+// sinonsi la variable get 'page' a une valeur
+// acceptée dans la constante de type array PUBLIC_PAGES
+}elseif(in_array($_GET['page'],PUBLIC_PAGES)){
+ 
+  // si la variable get correspond à une valeur
+  // acceptée dans le tableau
+  include ROOT_PROJECT."/view/".$_GET['page'].".html".".php";
+ 
+// sinon, la variable get page existe
+}else{
+ 
+    // Appel de l'erreur 404
+    include ROOT_PROJECT."/view/404.html.php";
+ 
+};
+
