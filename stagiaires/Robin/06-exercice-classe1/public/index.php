@@ -3,7 +3,7 @@
 
 # Importation de ../config-dev.php 
 require_once "../config-dev.php";
-# Importation du router : ROOT_PROJECT."/controller/routerController.php"
 
-require_once ROOT_PROJECT."/controller/routerController.php";
+# Importation du router : ROOT_PROJECT."/controller/routerController.php"
+require PROJECT_PATH."/controller/routerController.php";
 
